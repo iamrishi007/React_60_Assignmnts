@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+     <title>JSX and Babel</title>
+</head>
+
+<body>
+     <div id="root"></div>
+     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+     <script type="text/babel">
+          // Your JSX code here
+
+          let rootID = document.getElementById("root");
+          let rooElement = ReactDOM.createRoot(root)
+
+
+
+          function App() {
+               return (
+                    <>
+
+                         <div className="main" style={{ backgroundColor: 'lightblue', padding: '20px', borderRadius: '5px' }}>
+                              <p>Click the below button to alert 'Hello'</p>
+                              <button onClick={() => alert('Alert Hello')}>Hello</button>
+                         </div>
+                    </>
+               );
+          }
+
+          rooElement.render(<App />);
+     </script>
+</body>
+
+</html>
