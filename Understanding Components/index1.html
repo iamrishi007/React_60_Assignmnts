@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Dynamic List Rendering</title>
+</head>
+
+<body>
+     <div id="root">
+
+     </div>
+     <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+     <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+     <script type="text/babel">
+
+          // Your ItemList component code will go here
+
+          let rootID = document.getElementById("root")
+          let rootElement = ReactDOM.createRoot(rootID)
+          let App = () => {
+
+               function Gallery({ children1, children2, children3 ,children4}) {
+
+                    return (
+                         <>
+                              <img src={children1} alt="" />
+                              <img src={children2} alt="" />
+                              <img src={children3} alt="" />
+                              <img src={children4} alt="" />
+                         </>
+                    )
+               }
+
+               return (
+
+                    <>
+                         <Gallery children1="https://camo.githubusercontent.com/19db51af5f90f1b152bc0b9078f5fe97053955be5074f03f17019c70345bdcdb/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313336302f302a37513379765349765f7430696f4a2d5a2e676966" children2="https://i.pinimg.com/originals/f1/e7/34/f1e734f9cade86fe737a9aa404ad5677.gif" children3="https://camo.githubusercontent.com/14a82c9065ad50c7e8ef3fdf2463d22b0ef77c23c43784378e709d588130a58c/68747470733a2f2f7374617469632e7769787374617469632e636f6d2f6d656469612f6262653634325f36323431346535306265663334636532386462316166616266353566313765637e6d76322e676966" children4="https://camo.githubusercontent.com/01c83210f7feb975ea3b9a852808beb6689425add471f76f942c15875626af5d/68747470733a2f2f696d616765732e73717561726573706163652d63646e2e636f6d2f636f6e74656e742f76312f3537363966633430316236333162616231616464623261622f313534313538303631313632342d5445363451474b524a4738535741495553374e532f6b6531375a77644742546f6464493870446d34386b506f73776c7a6a53564d4d2d53784f703743563539425a772d7a505067646e346a557756634a45315a7657515578776b6d794578676c4e714770304976544a5a616d574c49327a76595748384b332d735f3479737a63703272795449304871544f6161556f68724938504936465879386339505774426c7141566c555335697a7064634958445a71445976707252715a32395077306f2f636f64696e672d667265616b2e676966" />
+
+                    </>
+               )
+
+
+          }
+          rootElement.render(<App/>)
+     </script>
+
+</body>
+
+</html>
