@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Template</title>
+</head>
+
+<body>
+     <div id="root">
+
+     </div>
+     <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+     <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+     <script type="text/babel">
+
+          let rootID = document.getElementById("root")
+          let print = ReactDOM.createRoot(rootID)
+
+          function App() {
+               const [colour, setColour] = React.useState("");
+
+               function handleInputValue(e) {
+                    setColour(e.target.value);
+               }
+
+               return (
+                    <>
+                         <input
+                              type="text"
+                              value={colour}
+                              onChange={handleInputValue}
+                              placeholder="Enter HEX code"
+                         />
+
+                         {colour.length === 4 || colour.length === 7 ? (
+                              <div
+                                   style={{
+                                        backgroundColor: colour,
+                                        width: '200px',
+                                        height: '200px',
+                                        marginTop: '10px auto',
+                                   }}
+                              ></div>
+                         ) : (
+                              <p> HEX color code is invalid </p>
+                         )}
+                    </>
+               );
+          }
+
+          print.render(<App />)
+
+     </script>
+</body>
+
+</html>
