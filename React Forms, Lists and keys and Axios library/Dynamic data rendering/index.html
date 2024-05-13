@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Template</title>
+
+     <style>
+          .card {
+               border: 1px solid #ccc;
+               border-radius: 5px;
+               padding: 10px;
+               margin: 10px;
+               width: 300px;
+               display: grid;
+               grid-template-columns: repeat(1, 1fr);
+          }
+
+          .card h3 {
+               margin: 5px 0;
+          }
+
+          .card h4 {
+               margin: 5px 0;
+               color: #666;
+          }
+     </style>
+</head>
+
+<body>
+     <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+     let rootID = document.getElementById("root")
+     let rootElm = ReactDOM.createRoot(rootID)
+
+     function App() {
+          const [data, setData] = React.useState([])
+          const [search, setSearch] = React.useState("")
+
+          async function fetchData() {
+               try {
+                    let res = await fetch('https://fakestoreapi.com/users')
+                    let finRes = await res.json()
+                    setData(finRes)
+               } catch (error) {
+                    console.log(error);
+               }
+          }
+
+          React.useEffect(() => {
+               fetchData()
+          }, [])
+
+          let handleSearch = (e) => {
+               setSearch(e.target.value)
+          }
+
+          let filteredData = data.filter(elm => {
+               return elm.name.firstname.toLowerCase().includes(search.toLowerCase()) ||
+                    elm.name.lastname.toLowerCase().includes(search.toLowerCase())
+          })
+
+
+          return (
+               <>
+                    <input type="text" onChange={handleSearch} placeholder="Search by name..." />
+                    {filteredData.map((elm, ind) => (
+                         <div key={ind} className="card">
+                              <h3>Name: {elm.name.firstname}</h3>
+                              <h4>Last Name: {elm.name.lastname}</h4>
+                         </div>
+                    ))}
+               </>
+          )
+     }
+
+     rootElm.render(<App />)
+</script>
+
+</html>
